@@ -133,3 +133,9 @@ function downloadMap() {
     });
   });
 }
+
+function resetButton() {
+  localStorage.removeItem("selectedCities")
+  cityCount = 0; document.getElementById("city_count").innerHTML = cityCount;
+  location.reload()
+}
