@@ -126,7 +126,7 @@ function downloadMap() {
     ctx.textAlign = "start";
     var textWidth = ctx.measureText("gsn1511.github.io/belgiumvisited");
     ctx.fillText("gsn1511.github.io/belgiumvisited", 10, canvas.height - 25);
-    ctx.fillText(cityCount + "/81", 10, 5);
+    ctx.fillText(cityCount + "/589", 10, 5);
 
     destCanvas.toBlob(function (blob) {
       saveAs(blob, "belgiumvisited.png");
