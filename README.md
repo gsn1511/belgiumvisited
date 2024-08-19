@@ -1,9 +1,14 @@
-# TurkeyVisited
+# BelgiumVisited
 
-Mark the cities you have visited in Turkey and share the map!
+Mark the cities you have visited in Belgium and share the map!
 
-Türkiye'de ziyaret ettiğiniz illeri haritadan işaretleyin ve paylaşın!
+{Site is going to be here}
 
-https://ozanyerli.github.io/turkeyvisited/
+![image](images/Belgiumvisited.png)
 
-![image](images/turkeyvisited.png)
+Credits to @ozanyerli for inspiration and code!
+
+### TODO:
+* Add highways
+* Different color scheme for each province and/or governement
+* Make map zoomable (when having lots of cities)
