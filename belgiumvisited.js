@@ -7,7 +7,7 @@ document.getElementById("city_count").innerHTML = cityCount;
 
 d3.json("be-cities.json").then(function (data) {
   let width = 1200;
-  height = 800;
+  height = 1000;
   let projection = d3.geoEqualEarth();
   projection.fitSize([width, height], data);
   let path = d3.geoPath().projection(projection);
