@@ -4,7 +4,7 @@ Mark the cities you have visited in Belgium and share the map!
 
 https://gsn1511.github.io/belgiumvisited/
 
-![image](images/belgiumvisited.png)
+![image](images/Belgiumvisited.png)
 
 Credits to @ozanyerli for inspiration and code!
 
