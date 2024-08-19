@@ -5,7 +5,7 @@ let cityCount = localStorage.getItem("selectedCities")
   : 0;
 document.getElementById("city_count").innerHTML = cityCount;
 
-d3.json("Gemeenten.json").then(function (data) {
+d3.json("be-cities.json").then(function (data) {
   let width = 1200;
   height = 900;
   let projection = d3.geoEqualEarth();
@@ -21,14 +21,14 @@ d3.json("Gemeenten.json").then(function (data) {
   let g = svg
     .append("g")
     .selectAll("path")
-    .data(data.objects.BEL_adm4.geometries)
+    .data(data.features)
     .join("path")
     .attr("d", path)
     .attr("fill", function (d, i) {
       if (localStorage.getItem("selectedCities")) {
         if (
           JSON.parse(localStorage.getItem("selectedCities")).includes(
-            d.properties.NAME_4
+            d.properties.Communes
           )
         ) {
           d.noFill = true;
@@ -55,15 +55,15 @@ d3.json("Gemeenten.json").then(function (data) {
           let tempSelectedCities = JSON.parse(
             localStorage.getItem("selectedCities")
           );
-          if (tempSelectedCities.includes(d.properties.NAME_4)) return;
-          tempSelectedCities.push(d.properties.NAME_4);
+          if (tempSelectedCities.includes(d.properties.Communes)) return;
+          tempSelectedCities.push(d.properties.Communes);
           localStorage.setItem(
             "selectedCities",
             JSON.stringify(tempSelectedCities)
           );
         } else {
           let tempArr = [];
-          tempArr.push(d.properties.NAME_4);
+          tempArr.push(d.properties.Communes);
           localStorage.setItem("selectedCities", JSON.stringify(tempArr));
         }
       } else {
@@ -75,7 +75,7 @@ d3.json("Gemeenten.json").then(function (data) {
         let tempSelectedCities = JSON.parse(
           localStorage.getItem("selectedCities")
         );
-        const index = tempSelectedCities.indexOf(d.properties.NAME_4);
+        const index = tempSelectedCities.indexOf(d.properties.Communes);
         if (index !== -1) {
           tempSelectedCities.splice(index, 1);
         }
@@ -87,16 +87,16 @@ d3.json("Gemeenten.json").then(function (data) {
       d.noFill = !d.noFill;
     });
 
-  console.log(data.objects.BEL_adm4.geometries.map((f) => f.properties.NAME_4));
+  console.log(data.features.map((f) => f.properties.Communes));
 
   g = svg.append("g");
 
   g.selectAll("text")
-    .data(data.objects.BEL_adm4.geometries)
+    .data(data.features)
     .enter()
     .append("text")
     .text(function (d) {
-      return d.properties.NAME_4;
+      return d.properties.Communes;
     })
     .attr("x", function (d) {
       return path.centroid(d)[0];
