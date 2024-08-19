@@ -28,7 +28,7 @@ d3.json("be-cities.json").then(function (data) {
       if (localStorage.getItem("selectedCities")) {
         if (
           JSON.parse(localStorage.getItem("selectedCities")).includes(
-            d.properties.name
+            d.properties.Communes
           )
         ) {
           d.noFill = true;
@@ -55,15 +55,15 @@ d3.json("be-cities.json").then(function (data) {
           let tempSelectedCities = JSON.parse(
             localStorage.getItem("selectedCities")
           );
-          if (tempSelectedCities.includes(d.properties.name)) return;
-          tempSelectedCities.push(d.properties.name);
+          if (tempSelectedCities.includes(d.properties.Communes)) return;
+          tempSelectedCities.push(d.properties.Communes);
           localStorage.setItem(
             "selectedCities",
             JSON.stringify(tempSelectedCities)
           );
         } else {
           let tempArr = [];
-          tempArr.push(d.properties.name);
+          tempArr.push(d.properties.Communes);
           localStorage.setItem("selectedCities", JSON.stringify(tempArr));
         }
       } else {
@@ -75,7 +75,7 @@ d3.json("be-cities.json").then(function (data) {
         let tempSelectedCities = JSON.parse(
           localStorage.getItem("selectedCities")
         );
-        const index = tempSelectedCities.indexOf(d.properties.name);
+        const index = tempSelectedCities.indexOf(d.properties.Communes);
         if (index !== -1) {
           tempSelectedCities.splice(index, 1);
         }
@@ -87,7 +87,7 @@ d3.json("be-cities.json").then(function (data) {
       d.noFill = !d.noFill;
     });
 
-  console.log(data.features.map((f) => f.properties.name));
+  console.log(data.features.map((f) => f.properties.Communes));
 
   g = svg.append("g");
 
@@ -96,7 +96,7 @@ d3.json("be-cities.json").then(function (data) {
     .enter()
     .append("text")
     .text(function (d) {
-      return d.properties.name;
+      return d.properties.Communes;
     })
     .attr("x", function (d) {
       return path.centroid(d)[0];
@@ -124,12 +124,12 @@ function downloadMap() {
     ctx.font = "2em Calibri";
     ctx.fillStyle = "black";
     ctx.textAlign = "start";
-    var textWidth = ctx.measureText("ozanyerli.github.io/turkeyvisited");
-    ctx.fillText("ozanyerli.github.io/turkeyvisited", 10, canvas.height - 25);
+    var textWidth = ctx.measureText("gsn1511.github.io/belgiumvisited");
+    ctx.fillText("gsn1511.github.io/belgiumvisited", 10, canvas.height - 25);
     ctx.fillText(cityCount + "/81", 10, 5);
 
     destCanvas.toBlob(function (blob) {
-      saveAs(blob, "turkeyvisited.png");
+      saveAs(blob, "belgiumvisited.png");
     });
   });
 }

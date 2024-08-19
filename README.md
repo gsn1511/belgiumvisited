@@ -2,7 +2,7 @@
 
 Mark the cities you have visited in Belgium and share the map!
 
-{Site is going to be here}
+https://gsn1511.github.io/belgiumvisited/
 
 ![image](images/Belgiumvisited.png)
 
