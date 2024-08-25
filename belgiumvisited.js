@@ -18,9 +18,17 @@ d3.json("be-cities.json").then(function (data) {
     .attr("width", width)
     .attr("height", height);
 
-  let g = svg
-    .append("g")
-    .selectAll("path")
+  let g = svg.append("g")
+
+  let zoom = d3.zoom()
+    .scaleExtent([1, 8]) 
+    .on("zoom", function (event) {
+      g.attr("transform", event.transform);
+    });
+
+  svg.call(zoom); 
+
+  g.selectAll("path")
     .data(data.features)
     .join("path")
     .attr("d", path)
