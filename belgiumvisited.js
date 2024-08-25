@@ -18,16 +18,7 @@ d3.json("be-cities.json").then(function (data) {
     .attr("width", width)
     .attr("height", height);
 
-  let g = svg.append("g")
-
-  let zoom = d3
-    .zoom()
-    .scaleExtent([1, 8]) 
-    .on("zoom", function (event) {
-      g.selectAll("path").attr("transform", d3.event.transform);
-    });
-
-  svg.call(zoom); 
+  let g = svg.append("g") 
 
   g.selectAll("path")
     .data(data.features)
@@ -98,8 +89,6 @@ d3.json("be-cities.json").then(function (data) {
 
   console.log(data.features.map((f) => f.properties.Communes));
 
-  g = svg.append("g");
-
   g.selectAll("text")
     .data(data.features)
     .enter()
@@ -117,6 +106,15 @@ d3.json("be-cities.json").then(function (data) {
     .attr("font-size", "10pt")
     .attr("style", "color: black;")
     .attr("style", "pointer-events: none;");
+
+  let zoom = d3
+    .zoom()
+    .scaleExtent([1, 8]) 
+    .on("zoom", function (event) {
+      g.selectAll("path").attr("transform", d3.event.transform);
+    });
+
+  svg.call(zoom);
 });
 
 function downloadMap() {
