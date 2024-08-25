@@ -147,3 +147,18 @@ function resetButton() {
   cityCount = 0; document.getElementById("city_count").innerHTML = cityCount;
   location.reload()
 }
+
+function zoomIn() {
+  svg.transition().call(zoom.scaleBy, 1.5);
+}
+
+function zoomOut() {
+  svg.transition().call(zoom.scaleBy, 0.75);
+}
+
+function resetZoom() {
+  svg.transition().call(zoom.transform, d3.zoomIdentity);
+}
+document.getElementById('zoom_in_button').onclick = zoomIn;
+document.getElementById('zoom_out_button').onclick = zoomOut;
+document.getElementById('reset_zoom_button').onclick = resetZoom;
