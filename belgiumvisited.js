@@ -7,7 +7,7 @@ document.getElementById("city_count").innerHTML = cityCount;
 
 d3.json("be-cities.json").then(function (data) {
   let width = 1200;
-  height = 900;
+  let height = 900;
   let projection = d3.geoEqualEarth();
   projection.fitSize([width, height], data);
   let path = d3.geoPath().projection(projection);
@@ -23,7 +23,8 @@ d3.json("be-cities.json").then(function (data) {
   let zoom = d3.zoom()
     .scaleExtent([1, 8]) 
     .on("zoom", function (event) {
-      g.attr("transform", event.transform);
+      let transform = d3.event.transform; 
+      g.attr("transform", transform); 
     });
 
   svg.call(zoom); 
