@@ -110,8 +110,8 @@ d3.json("be-cities.json").then(function (data) {
   let zoom = d3
     .zoom()
     .scaleExtent([1, 8]) 
-    .on("zoom", function (event) {
-      g.selectAll("path").attr("transform", d3.event.transform);
+    .on("zoom", function () {
+      g.attr("transform", d3.event.transform);
     });
 
   svg.call(zoom);
